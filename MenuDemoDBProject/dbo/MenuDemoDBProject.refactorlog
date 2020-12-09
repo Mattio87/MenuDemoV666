@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="ea1e3517-5cff-4458-9539-10a2e2db4443" ChangeDateTime="12/01/2020 07:50:21">
+    <Property Name="ElementName" Value="[dbo].[Dishes].[descrption]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Dishes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Descrption" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4245b0f9-cf20-4a94-ad1a-aa4488c7857a" ChangeDateTime="12/01/2020 07:50:25">
+    <Property Name="ElementName" Value="[dbo].[Dishes].[name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Dishes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Name" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9e79dd24-b587-41b9-9b47-23ab30320801" ChangeDateTime="12/01/2020 07:50:44">
+    <Property Name="ElementName" Value="[dbo].[Dishes].[Descrption]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Dishes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Description" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="742e25b1-bbd0-42fd-9bbd-152cefb0d98e" ChangeDateTime="12/03/2020 08:27:40">
+    <Property Name="ElementName" Value="[dbo].[Dishes].[isAlcoholic]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Dishes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Amount" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b5935b6e-c28f-4d66-b645-1fa5b168d3e3" ChangeDateTime="12/03/2020 08:42:06">
+    <Property Name="ElementName" Value="[dbo].[FK_Dishes_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Dishes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Dishes_ToDishTypes]" />
+  </Operation>
+</Operations>
