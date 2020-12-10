@@ -52,8 +52,36 @@ namespace MenuDemoLibrary
             int mealId;
             using (IDbConnection connection = new SqlConnection(str))
             {
-                mealId = connection.QuerySingle<int>("INSERT dbo.Dishes (Name, Description, Price, Dishtype) OUTPUT INSERTED.ID " +
-                    "VALUES (@name, @description, @price, @dishtype)", new { name = meal.Name, description = meal.Description, price = meal.Price, dishtype = meal.Dishtype });
+                
+                
+                mealId = connection.QuerySingle<int>("INSERT dbo.Dishes (Name, Description, Sauce, Price, Dishtype) OUTPUT INSERTED.ID " +
+                    "VALUES (@name, @description, @sauce, @price, @dishtype)", new { name = meal.Name, description = meal.Description, sauce=meal.Sauce, price = meal.Price, dishtype = meal.Dishtype });
+                
+                if (meal.GetType()== typeof(Burger))
+                {
+                    mealId = connection.QuerySingle<int>("UPDATE dbo.Dishes SET Bun=@bun, Patty=@patty, Cheese=@cheese OUTPUT INSERTED.ID WHERE Id=@id", new {bun=(meal as Burger).Bun, patty = (meal as Burger).Patty, cheese = (meal as Burger).Cheese, id=mealId });
+                }
+
+                else if (meal.GetType()== typeof(Pizza))
+                {
+                    mealId = connection.QuerySingle<int>("UPDATE dbo.Dishes SET Toppings=@toppings OUTPUT INSERTED.ID WHERE Id=@id)", new {toppings = (meal as Pizza).Toppings, id=mealId });
+                }
+
+                else if (meal.GetType()== typeof(Pasta))
+                {
+                    mealId = connection.QuerySingle<int>("UPDATE dbo.Dishes SET Pastatype=@pastatype, Meat=@meat OUTPUT INSERTED.ID WHERE Id=@id", new { meat=(meal as Pasta).Meat, pastatype=(meal as Pasta).Pastatype, id=mealId });
+                }
+
+                else if (meal.GetType()== typeof(Steak))
+                {
+                    mealId = connection.QuerySingle<int>("UPDATE dbo.Dishes SET Steaktype=@steaktype, Side=@side  OUTPUT INSERTED.ID WHERE Id=@id", new { steaktype=(meal as Steak).Steaktype, side=(meal as Steak).Side, id=mealId });
+                }
+
+                else if(meal.GetType()== typeof(Drinks))
+                {
+                    mealId = connection.QuerySingle<int>("UPDATE dbo.Dishes SET Amount=@amount, isAlcoholic=@isalcoholic OUTPUT INSERTED.ID WHERE Id=@id", new { amount=(meal as Drinks).Amount, isalcoholic=(meal as Drinks).isAlcoholic, id=mealId });
+                }
+
             }
 
             if(mealId>0 && meal.GetAllergens().Count > 0)

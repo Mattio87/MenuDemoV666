@@ -16,32 +16,8 @@ namespace MenuDemo
             MealManager mlmngr = new MealManager(dtmngr);
 
 
-            //var y = DataManager.GetAllRestaurantDataFromDB(1);
-            //var z = DataManager.GetListOfCategoriesInDBMenus(1);
-            //var x = DataManager.GetListOfMealsInDBCategory(2);
-            //var f = DataManager.GetMealWithID(10);
-            //var k = DataManager.GetCategoryIdsFromMenuDB(1);
-
 
             mlmngr.SuperMainMenu();
-            //mlmngr.SelectRestaurantFromAllRestaurantsList();
-
-            //DataManager.GetAllDishes();
-            //mlmngr.ShowCategoryMealsWithCategoryInfoFromDB();
-
-            /*
-            Meals meal = new Meals
-            {
-                Name = "Sausage Burger",
-                Description = "Tradional Finnish sausage burger also" +
-                "known as Porilainen",
-                Price = 8.0F,
-                Dishtype = 2
-            };
-            meal.AddAllergen(Allergen.AllergenType.glutenFree);
-            meal.AddAllergen(Allergen.AllergenType.milkFree);
-            DataManager.InsertMealToDB(meal);
-            */
 
         }
     }

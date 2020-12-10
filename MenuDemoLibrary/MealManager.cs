@@ -31,6 +31,7 @@ namespace MenuDemoLibrary
         public void ShowMealData(Meals meal)
         {
             Console.WriteLine();
+            Console.WriteLine($"Id: {meal.Id}");
             Console.WriteLine($"{meal.Name}");
             if(meal.Description != null)
             {
@@ -167,13 +168,13 @@ namespace MenuDemoLibrary
                         Console.WriteLine("The dish you created:");
                         this.ShowMealData(meal);
 
-                        Console.WriteLine("Do you want to add this dish to all dishes list?");
+                        Console.WriteLine("Do you want to add this dish to database?");
                         Console.WriteLine("Answer Y or N");
                         bool happyness = GetYesOrNoFromUser();
                         if (happyness == true)
                         {
-                            dataManager.AddMealToAllMealsList(meal);
-                            Console.WriteLine("Dish added to the list.");
+                            int mealId = DataManager.InsertMealToDB(meal);
+                            Console.WriteLine($"Dish added to the database with the Id: {mealId}");
                         }
                         Console.WriteLine("Dish creation complete.");
                         Console.WriteLine("\nPress any key to continue");
@@ -497,33 +498,45 @@ namespace MenuDemoLibrary
             if (selected == 1)
             {
                 meal = new Drinks();
+                meal.Dishtype = 7;
             }
 
             if (selected == 2)
             {
                 meal = new Burger();
+                meal.Dishtype = 2;
             }
 
             if (selected == 3)
             {
                 meal = new Pizza();
+                meal.Dishtype = 3;
             }
 
             if (selected == 4)
             {
                 meal = new Pasta();
+                meal.Dishtype = 4;
             }
 
             if (selected == 5)
             {
                 meal = new Steak();
+                meal.Dishtype = 5;
             }
 
-            if (selected >= 6)
+            if (selected == 6)
             {
                 meal = new Meals();
+                meal.Dishtype = 1;
             }
 
+            if (selected == 7)
+            {
+                meal = new Meals();
+                meal.Dishtype = 6;
+            }
+            
             if (meal.GetType() == typeof(Drinks))
             {
                 Console.WriteLine("Is the drink alcoholic?");
@@ -541,6 +554,7 @@ namespace MenuDemoLibrary
                 Console.WriteLine("Give the drink amount in centilitres:");
                 int amount = int.Parse(Console.ReadLine());
                 (meal as Drinks).Amount = amount;
+                
 
             }
             
@@ -555,6 +569,7 @@ namespace MenuDemoLibrary
 
                 Console.WriteLine("Give bun info:");
                 (meal as Burger).Bun = StringChecker(Console.ReadLine());
+                
 
             }
             
@@ -562,6 +577,7 @@ namespace MenuDemoLibrary
             {
                 Console.WriteLine("Give the pizza toppings:");
                 (meal as Pizza).Toppings = StringChecker(Console.ReadLine());
+                
 
             }
 
